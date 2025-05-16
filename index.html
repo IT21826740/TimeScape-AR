@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TimeScape AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/2.1.8/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+
+      <!-- Lighting helps make model visible -->
+      <a-entity light="type: ambient; intensity: 1.5"></a-entity>
+      <a-entity light="type: directional; intensity: 2.0" position="0 1 0"></a-entity>
+      <a-entity light="type: directional; intensity: 2.5" position="1 1 1"></a-entity>
+      <!-- Load the model asset -->
+      <a-assets>
+        <a-asset-item id="model1" src="diabolus_rex.gltf"></a-asset-item>
+        <a-asset-item id="model2" src="dragon.gltf"></a-asset-item>
+        <a-asset-item id="model3" src="velociraptor.gltf"></a-asset-item>
+        <a-asset-item id="model4" src="stegasaurus.gltf"></a-asset-item>
+      </a-assets>
+
+ <!-- Marker and model -->
+      <a-marker preset="hiro">
+        <!-- diabolus_rex -->
+        <a-entity
+          id="animated-model"
+          gltf-model="#model1"
+          animation-mixer="loop: repeat"
+          scale="0.2 0.2 0.2"
+          position="-0.3 0.2 -0.5"
+          rotation="0 180 0"
+          material="emissiveIntensity: 0.5">
+        </a-entity>
+
+        <!-- Dragon -->
+        <a-entity
+           gltf-model="#model2"
+           animation-mixer="loop: repeat"
+           scale="0.03 0.03 0.03"
+           position="0.3 0 0"
+           rotation="0 180 0"
+           material="emissiveIntensity: 0.3">
+        </a-entity>
+
+        <!-- Velociraptor -->
+        <a-entity
+           gltf-model="#model3"
+           animation-mixer
+           scale="0.5 0.5 0.5"
+           position="0.5 0.5 -0.2"
+           rotation="0 180 0"
+           material="emissiveIntensity: 0.5">
+        </a-entity>
+
+         <!-- Stegosaurus -->
+       <a-entity
+           gltf-model="#model4"
+           animation-mixer="loop: repeat"
+           scale="0.2 0.2 0.2"
+           position="-0.8 0 0"
+           rotation="0 180 0">
+        </a-entity>
+
+      </a-marker>
+
+      <!-- Camera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
